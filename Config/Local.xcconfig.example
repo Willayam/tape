@@ -1,0 +1,8 @@
+// Copy this file to Local.xcconfig (git ignores it) to run Tape on your iPhone.
+
+// Your team ID: Xcode › Settings › Accounts, or developer.apple.com › Membership.
+// A free Apple ID works too; its builds expire after seven days.
+DEVELOPMENT_TEAM = ABCDE12345
+
+// Any reverse-DNS name you own. It has to be unique to your team.
+TAPE_BUNDLE_ID = com.yourname.tape

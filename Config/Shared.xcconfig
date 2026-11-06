@@ -1,0 +1,11 @@
+// Build settings everyone shares. Personal signing lives in Local.xcconfig, which git ignores.
+
+// The Mac app signs itself locally (see project.yml), so it needs no Apple developer account.
+CODE_SIGN_STYLE = Automatic
+
+// The iPhone app needs your own team and a bundle ID nobody else has registered.
+// Copy Local.xcconfig.example to Local.xcconfig and fill both in.
+DEVELOPMENT_TEAM =
+TAPE_BUNDLE_ID = com.example.tape
+
+#include? "Local.xcconfig"

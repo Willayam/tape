@@ -1,0 +1,513 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		010003E4262A8FA9311147B1 /* PTCBP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E5902CE484C54690DD5C4F /* PTCBP.swift */; };
+		0609CA8D9E8F317ECF75D086 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A412BB58E77249E5E9977E /* ContentView.swift */; };
+		0E46714FBB7FFA35D2A30579 /* LabelEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F907832B9DCBD8605D7B7BFC /* LabelEditorView.swift */; };
+		1CD0D03388F767CAFD1D68D2 /* SymbolCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35B2A7BAE0686E62DBC2970 /* SymbolCatalog.swift */; };
+		21FF8A572C8559F8FFB2772B /* Phosphor-LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4C7A91843CCF13ADE1C6B604 /* Phosphor-LICENSE.txt */; };
+		29D631D001E6D0C6B855147F /* RFCOMMLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE981D13B93CD26FAA720892 /* RFCOMMLink.swift */; };
+		34608BC1D2C75906C093AC73 /* TapeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57C910EC21F9F12747DF7D /* TapeApp.swift */; };
+		3A2CAD00748536CD02D8317E /* ByteLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505F92A4D43C22BF7894CF60 /* ByteLink.swift */; };
+		3CF219D3E074FFA06C56ED24 /* symbols.json in Resources */ = {isa = PBXBuildFile; fileRef = 7E442FF971180C886E6113C3 /* symbols.json */; };
+		5A647CB3C2148B8B6D68EFE8 /* TapeIcons-LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = E327DEC3C85C5D6F705FF054 /* TapeIcons-LICENSE.txt */; };
+		6857A2FAD9F55CF9B868DF25 /* TapeIcons-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4EFA61907DBF392597F2DB60 /* TapeIcons-Regular.otf */; };
+		79CF3F4821843EE9E39316E7 /* TapePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F52928204F2524953DB307C /* TapePreview.swift */; };
+		7AE6C9AC8375D82B833866A8 /* Phosphor.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3936917FF6BE36E4C65E1F12 /* Phosphor.ttf */; };
+		8E6EC7BC3DF111B3E6139533 /* LabelTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCBFC7081BE3BEB39E858C3 /* LabelTextView.swift */; };
+		8EDCB9036E53E77510673FEC /* LabelCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BFB4B530C33226A8CA42B8 /* LabelCanvas.swift */; };
+		934D29CC1B54A828B0FB093B /* FontIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F509DBAB90183A9EE10327 /* FontIcons.swift */; };
+		9BF37302787BCBFA8A539362 /* LabelDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D32D127B1B5FA7B62078495 /* LabelDesign.swift */; };
+		9C4A893E5FD8905028F93D9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11D0BD9D382F1FE331CB067D /* Assets.xcassets */; };
+		ADE6E0932A83F827581D4E6C /* LabelRasterizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49CEBC2E32F18D89437CD4 /* LabelRasterizer.swift */; };
+		BFD649105338F28E48D0AFA4 /* AccessoryLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131FD2EC583A86E7C735188D /* AccessoryLink.swift */; };
+		C57291445FF92DE7F74EB184 /* TapeIcons-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 19CB0CDB0A4878F05E1832F2 /* TapeIcons-Bold.otf */; };
+		CA3D2A51FEDCECE5BC8087D6 /* SymbolPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57528509F65BB3399D175F87 /* SymbolPicker.swift */; };
+		DC3C4B2914F25D9EE79194CD /* Phosphor-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C5109D1A2B0A961327E1381 /* Phosphor-Bold.ttf */; };
+		ED62267D7B366D9C188B6EE9 /* Phosphor-Fill.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBCEEFD3CD4C3FC3160F113B /* Phosphor-Fill.ttf */; };
+		F017492ADAEA16DFF853A306 /* PrinterSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D417CE311C85D04FBD4256 /* PrinterSession.swift */; };
+		F451B4618A6AEEDB9777A4A9 /* LabelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5701F6BA3C3A49F89E1683A7 /* LabelStore.swift */; };
+		F50C4809D43E7770A8E2F4C5 /* PrinterStatusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D526CD084088F4528DDB19C /* PrinterStatusMenu.swift */; };
+		F826AA5D3B0BDDA283840E87 /* PrinterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524DDD0AF4C35A7B6D12DA61 /* PrinterStatus.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		10E5902CE484C54690DD5C4F /* PTCBP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTCBP.swift; sourceTree = "<group>"; };
+		11D0BD9D382F1FE331CB067D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		131FD2EC583A86E7C735188D /* AccessoryLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryLink.swift; sourceTree = "<group>"; };
+		19CB0CDB0A4878F05E1832F2 /* TapeIcons-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TapeIcons-Bold.otf"; sourceTree = "<group>"; };
+		3936917FF6BE36E4C65E1F12 /* Phosphor.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Phosphor.ttf; sourceTree = "<group>"; };
+		4B49CEBC2E32F18D89437CD4 /* LabelRasterizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelRasterizer.swift; sourceTree = "<group>"; };
+		4C7A91843CCF13ADE1C6B604 /* Phosphor-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Phosphor-LICENSE.txt"; sourceTree = "<group>"; };
+		4D526CD084088F4528DDB19C /* PrinterStatusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterStatusMenu.swift; sourceTree = "<group>"; };
+		4EFA61907DBF392597F2DB60 /* TapeIcons-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TapeIcons-Regular.otf"; sourceTree = "<group>"; };
+		505F92A4D43C22BF7894CF60 /* ByteLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByteLink.swift; sourceTree = "<group>"; };
+		524DDD0AF4C35A7B6D12DA61 /* PrinterStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterStatus.swift; sourceTree = "<group>"; };
+		5701F6BA3C3A49F89E1683A7 /* LabelStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStore.swift; sourceTree = "<group>"; };
+		57528509F65BB3399D175F87 /* SymbolPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolPicker.swift; sourceTree = "<group>"; };
+		5903C670BC8FD927DC97FF68 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
+		5D32D127B1B5FA7B62078495 /* LabelDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDesign.swift; sourceTree = "<group>"; };
+		6C5109D1A2B0A961327E1381 /* Phosphor-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Phosphor-Bold.ttf"; sourceTree = "<group>"; };
+		71D417CE311C85D04FBD4256 /* PrinterSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterSession.swift; sourceTree = "<group>"; };
+		7E442FF971180C886E6113C3 /* symbols.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = symbols.json; sourceTree = "<group>"; };
+		8584A24172F167D789D40B89 /* Tape.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Tape.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		85F509DBAB90183A9EE10327 /* FontIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontIcons.swift; sourceTree = "<group>"; };
+		95BFB4B530C33226A8CA42B8 /* LabelCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCanvas.swift; sourceTree = "<group>"; };
+		9F52928204F2524953DB307C /* TapePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapePreview.swift; sourceTree = "<group>"; };
+		AA57C910EC21F9F12747DF7D /* TapeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapeApp.swift; sourceTree = "<group>"; };
+		CFCBFC7081BE3BEB39E858C3 /* LabelTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTextView.swift; sourceTree = "<group>"; };
+		D8A412BB58E77249E5E9977E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DE981D13B93CD26FAA720892 /* RFCOMMLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFCOMMLink.swift; sourceTree = "<group>"; };
+		E327DEC3C85C5D6F705FF054 /* TapeIcons-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "TapeIcons-LICENSE.txt"; sourceTree = "<group>"; };
+		E35B2A7BAE0686E62DBC2970 /* SymbolCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolCatalog.swift; sourceTree = "<group>"; };
+		EBCEEFD3CD4C3FC3160F113B /* Phosphor-Fill.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Phosphor-Fill.ttf"; sourceTree = "<group>"; };
+		F907832B9DCBD8605D7B7BFC /* LabelEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelEditorView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		114E8DAA53E52CB0536BC647 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				11D0BD9D382F1FE331CB067D /* Assets.xcassets */,
+				A0708586FBCFE22B9F1D0378 /* App */,
+				A5F0EE9284AFEDC6EFD0324B /* Model */,
+				4A929767BFC2DB6BC6C953F7 /* Printer */,
+				DFDC18B53F7F779F63B8CFC1 /* Rendering */,
+				26FEAED5F8F78B5990F25454 /* Resources */,
+				24EBB50CD1D20A30335A8E57 /* Symbols */,
+				E669701B9F8B906781BE71D5 /* Views */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		24EBB50CD1D20A30335A8E57 /* Symbols */ = {
+			isa = PBXGroup;
+			children = (
+				85F509DBAB90183A9EE10327 /* FontIcons.swift */,
+				E35B2A7BAE0686E62DBC2970 /* SymbolCatalog.swift */,
+			);
+			path = Symbols;
+			sourceTree = "<group>";
+		};
+		26FEAED5F8F78B5990F25454 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7E442FF971180C886E6113C3 /* symbols.json */,
+				F36138B4BF904C91827D718D /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		364F1DE03B29BB3771B977E8 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				5903C670BC8FD927DC97FF68 /* Shared.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		4A929767BFC2DB6BC6C953F7 /* Printer */ = {
+			isa = PBXGroup;
+			children = (
+				131FD2EC583A86E7C735188D /* AccessoryLink.swift */,
+				505F92A4D43C22BF7894CF60 /* ByteLink.swift */,
+				71D417CE311C85D04FBD4256 /* PrinterSession.swift */,
+				524DDD0AF4C35A7B6D12DA61 /* PrinterStatus.swift */,
+				10E5902CE484C54690DD5C4F /* PTCBP.swift */,
+				DE981D13B93CD26FAA720892 /* RFCOMMLink.swift */,
+			);
+			path = Printer;
+			sourceTree = "<group>";
+		};
+		A02D61922AC0DC06564870E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8584A24172F167D789D40B89 /* Tape.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A0708586FBCFE22B9F1D0378 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				AA57C910EC21F9F12747DF7D /* TapeApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A5F0EE9284AFEDC6EFD0324B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5D32D127B1B5FA7B62078495 /* LabelDesign.swift */,
+				5701F6BA3C3A49F89E1683A7 /* LabelStore.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CF0717BD11C4657B27DE63F2 = {
+			isa = PBXGroup;
+			children = (
+				364F1DE03B29BB3771B977E8 /* Config */,
+				114E8DAA53E52CB0536BC647 /* Shared */,
+				A02D61922AC0DC06564870E1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DFDC18B53F7F779F63B8CFC1 /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				95BFB4B530C33226A8CA42B8 /* LabelCanvas.swift */,
+				4B49CEBC2E32F18D89437CD4 /* LabelRasterizer.swift */,
+			);
+			path = Rendering;
+			sourceTree = "<group>";
+		};
+		E669701B9F8B906781BE71D5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D8A412BB58E77249E5E9977E /* ContentView.swift */,
+				F907832B9DCBD8605D7B7BFC /* LabelEditorView.swift */,
+				CFCBFC7081BE3BEB39E858C3 /* LabelTextView.swift */,
+				4D526CD084088F4528DDB19C /* PrinterStatusMenu.swift */,
+				57528509F65BB3399D175F87 /* SymbolPicker.swift */,
+				9F52928204F2524953DB307C /* TapePreview.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F36138B4BF904C91827D718D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6C5109D1A2B0A961327E1381 /* Phosphor-Bold.ttf */,
+				EBCEEFD3CD4C3FC3160F113B /* Phosphor-Fill.ttf */,
+				4C7A91843CCF13ADE1C6B604 /* Phosphor-LICENSE.txt */,
+				3936917FF6BE36E4C65E1F12 /* Phosphor.ttf */,
+				19CB0CDB0A4878F05E1832F2 /* TapeIcons-Bold.otf */,
+				E327DEC3C85C5D6F705FF054 /* TapeIcons-LICENSE.txt */,
+				4EFA61907DBF392597F2DB60 /* TapeIcons-Regular.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		518E2037129B0255833CF628 /* Tape */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E4AAA3FCFA6B24B8BCDA8F7 /* Build configuration list for PBXNativeTarget "Tape" */;
+			buildPhases = (
+				B6890BEACE963826787A4F65 /* Sources */,
+				CBDC65E711C75246AFEE8B98 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tape;
+			packageProductDependencies = (
+			);
+			productName = Tape;
+			productReference = 8584A24172F167D789D40B89 /* Tape.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		67BB55F6742D451080F2D23A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					518E2037129B0255833CF628 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = B0DF0E666DC05BA9DB719D8F /* Build configuration list for PBXProject "Tape" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF0717BD11C4657B27DE63F2;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A02D61922AC0DC06564870E1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				518E2037129B0255833CF628 /* Tape */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CBDC65E711C75246AFEE8B98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C4A893E5FD8905028F93D9E /* Assets.xcassets in Resources */,
+				DC3C4B2914F25D9EE79194CD /* Phosphor-Bold.ttf in Resources */,
+				ED62267D7B366D9C188B6EE9 /* Phosphor-Fill.ttf in Resources */,
+				21FF8A572C8559F8FFB2772B /* Phosphor-LICENSE.txt in Resources */,
+				7AE6C9AC8375D82B833866A8 /* Phosphor.ttf in Resources */,
+				C57291445FF92DE7F74EB184 /* TapeIcons-Bold.otf in Resources */,
+				5A647CB3C2148B8B6D68EFE8 /* TapeIcons-LICENSE.txt in Resources */,
+				6857A2FAD9F55CF9B868DF25 /* TapeIcons-Regular.otf in Resources */,
+				3CF219D3E074FFA06C56ED24 /* symbols.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B6890BEACE963826787A4F65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFD649105338F28E48D0AFA4 /* AccessoryLink.swift in Sources */,
+				3A2CAD00748536CD02D8317E /* ByteLink.swift in Sources */,
+				0609CA8D9E8F317ECF75D086 /* ContentView.swift in Sources */,
+				934D29CC1B54A828B0FB093B /* FontIcons.swift in Sources */,
+				8EDCB9036E53E77510673FEC /* LabelCanvas.swift in Sources */,
+				9BF37302787BCBFA8A539362 /* LabelDesign.swift in Sources */,
+				0E46714FBB7FFA35D2A30579 /* LabelEditorView.swift in Sources */,
+				ADE6E0932A83F827581D4E6C /* LabelRasterizer.swift in Sources */,
+				F451B4618A6AEEDB9777A4A9 /* LabelStore.swift in Sources */,
+				8E6EC7BC3DF111B3E6139533 /* LabelTextView.swift in Sources */,
+				010003E4262A8FA9311147B1 /* PTCBP.swift in Sources */,
+				F017492ADAEA16DFF853A306 /* PrinterSession.swift in Sources */,
+				F826AA5D3B0BDDA283840E87 /* PrinterStatus.swift in Sources */,
+				F50C4809D43E7770A8E2F4C5 /* PrinterStatusMenu.swift in Sources */,
+				29D631D001E6D0C6B855147F /* RFCOMMLink.swift in Sources */,
+				1CD0D03388F767CAFD1D68D2 /* SymbolCatalog.swift in Sources */,
+				CA3D2A51FEDCECE5BC8087D6 /* SymbolPicker.swift in Sources */,
+				34608BC1D2C75906C093AC73 /* TapeApp.swift in Sources */,
+				79CF3F4821843EE9E39316E7 /* TapePreview.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		650536750A71AA65CA34A2E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5903C670BC8FD927DC97FF68 /* Shared.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		8B645E01B60E3D7BF7904C9D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5903C670BC8FD927DC97FF68 /* Shared.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E63F0EB5D93201502DDA02E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "Config/Tape-macOS.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_STYLE[sdk=macosx*]" = Manual;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Config/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Tape;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Tape talks to your label printer over Bluetooth.";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(TAPE_BUNDLE_ID)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F074EC75860BA45EE71F5762 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "Config/Tape-macOS.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_STYLE[sdk=macosx*]" = Manual;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Config/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Tape;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Tape talks to your label printer over Bluetooth.";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(TAPE_BUNDLE_ID)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3E4AAA3FCFA6B24B8BCDA8F7 /* Build configuration list for PBXNativeTarget "Tape" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E63F0EB5D93201502DDA02E9 /* Debug */,
+				F074EC75860BA45EE71F5762 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B0DF0E666DC05BA9DB719D8F /* Build configuration list for PBXProject "Tape" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B645E01B60E3D7BF7904C9D /* Debug */,
+				650536750A71AA65CA34A2E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 67BB55F6742D451080F2D23A /* Project object */;
+}
