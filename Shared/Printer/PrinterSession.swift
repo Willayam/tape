@@ -35,6 +35,17 @@ final class PrinterSession {
         }
     }
 
+    /// True from the moment Print is pressed until the job ends, including while
+    /// it waits for a connection that was already opening.
+    var isPrinting: Bool {
+        if queued != nil { return true }
+        if case .printing = phase { return true }
+        return false
+    }
+
+    /// A label to print once the connection that's opening finishes.
+    private var queued: LabelDesign?
+
     func refresh() async {
         guard !isBusy else { return }
         phase = .connecting
@@ -43,12 +54,22 @@ final class PrinterSession {
             lastError = nil
             phase = .ready
         } catch {
-            fail(error)
+            // A waiting print reports its own error when it retries the connection.
+            if queued == nil { fail(error) }
+        }
+        if let next = queued {
+            queued = nil
+            await print(next)
         }
     }
 
     func print(_ design: LabelDesign) async {
-        guard !isBusy, !design.isEmpty else { return }
+        guard !design.isEmpty else { return }
+        if phase == .connecting {
+            queued = design
+            return
+        }
+        guard !isBusy else { return }
         let bitmap = LabelRasterizer.bitmap(for: design)
         phase = .printing(0)
         do {

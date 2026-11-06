@@ -106,7 +106,6 @@ struct LabelEditorView: View {
         .safeAreaInset(edge: .bottom) {
             if !editing {
                 printButton
-                    .buttonStyle(.borderedProminent)
                     .controlSize(.large)
                     .padding(.horizontal)
                     .padding(.bottom, 8)
@@ -120,8 +119,7 @@ struct LabelEditorView: View {
             #if os(macOS)
             ToolbarItem(placement: .primaryAction) {
                 printButton
-                    .labelStyle(.titleAndIcon)
-                    .buttonStyle(.borderedProminent)
+                    .labelStyle(.titleOnly)
             }
             #endif
         }
@@ -186,27 +184,41 @@ struct LabelEditorView: View {
         #endif
     }
 
+    /// Blue while there is something to print. An empty label gets the plain grey
+    /// button, which is how macOS shows a default button that can't be pressed.
+    @ViewBuilder
     private var printButton: some View {
-        Button(action: startPrint) {
-            switch printer.phase {
-            case .printing(let progress):
-                HStack(spacing: 8) {
-                    ProgressView(value: progress)
-                        .progressViewStyle(.circular)
-                        .controlSize(.small)
-                    Text("Printing")
+        let button = Button(action: startPrint) {
+            Group {
+                if printer.isPrinting {
+                    HStack(spacing: 8) {
+                        ProgressView(value: printProgress)
+                            .progressViewStyle(.circular)
+                            .controlSize(.small)
+                        Text("Printing")
+                    }
+                } else if printer.phase == .printed {
+                    Label("Printed", systemImage: "checkmark")
+                } else {
+                    Label("Print", systemImage: "printer")
                 }
-                .frame(maxWidth: maxButtonWidth)
-            case .printed:
-                Label("Printed", systemImage: "checkmark")
-                    .frame(maxWidth: maxButtonWidth)
-            default:
-                Label("Print", systemImage: "printer")
-                    .frame(maxWidth: maxButtonWidth)
             }
+            .frame(maxWidth: maxButtonWidth)
+            #if os(macOS)
+            .padding(.horizontal, 6)
+            #endif
         }
         .keyboardShortcut("p")
-        .disabled(design.isEmpty || printer.isBusy)
+        .disabled(design.isEmpty)
+        if design.isEmpty {
+            button.buttonStyle(.bordered)
+        } else {
+            button.buttonStyle(.borderedProminent)
+        }
+    }
+
+    private var printProgress: Double {
+        if case .printing(let progress) = printer.phase { progress } else { 0 }
     }
 
     private var maxButtonWidth: CGFloat? {
