@@ -62,7 +62,7 @@ The printer has a few fixed limits:
 
 ## Status
 
-On a Mac, Tape connects to the printer and reads its status. The iPhone connection hasn't been tried with a real printer yet. Brother doesn't publish the protocol name the iPhone app uses for this model. If the iPhone can't connect, the app shows the name the printer offers instead, so please open an issue with that message.
+Printing works from a Mac with a PT-P300BT. The iPhone connection hasn't been tried with a real printer yet. Brother doesn't publish the protocol name the iPhone app uses for this model. If the iPhone can't connect, the app shows the name the printer offers instead, so please open an issue with that message.
 
 The print heights for 3.5, 6 and 9 mm tape come from Brother's spec for other P-touch models. They may need adjusting after a test print.
 
