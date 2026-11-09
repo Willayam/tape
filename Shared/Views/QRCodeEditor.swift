@@ -37,7 +37,7 @@ struct QRCodeEditor: View {
                 preview(code)
                 Text(advice(code))
                     .font(.callout)
-                    .foregroundStyle(code != nil && code!.fits(tape) || trimmed.isEmpty ? Color.secondary : Color.red)
+                    .foregroundStyle(code?.fits(tape) == true || trimmed.isEmpty ? Color.secondary : Color.red)
                     .fixedSize(horizontal: false, vertical: true)
             }
 
