@@ -44,7 +44,7 @@ final class PrinterSession {
     }
 
     /// A label to print once the connection that's opening finishes.
-    private var queued: LabelDesign?
+    private var queued: (bitmap: LabelBitmap, tape: TapeWidth)?
 
     func refresh() async {
         guard !isBusy else { return }
@@ -59,26 +59,29 @@ final class PrinterSession {
         }
         if let next = queued {
             queued = nil
-            await print(next)
+            await send(next.bitmap, tape: next.tape)
         }
     }
 
     func print(_ design: LabelDesign) async {
         guard !design.isEmpty else { return }
+        await send(LabelRasterizer.bitmap(for: design), tape: design.tape)
+    }
+
+    private func send(_ bitmap: LabelBitmap, tape: TapeWidth) async {
         if phase == .connecting {
-            queued = design
+            queued = (bitmap, tape)
             return
         }
         guard !isBusy else { return }
-        let bitmap = LabelRasterizer.bitmap(for: design)
         phase = .printing(0)
         do {
             let status = try await connectAndQuery()
             self.status = status
             guard status.hasTape else { throw PrinterError.noTape }
             guard status.isReady else { throw PrinterError.notReady(status.problems) }
-            if let loaded = status.tape, loaded != design.tape {
-                throw PrinterError.tapeMismatch(loaded: loaded, label: design.tape)
+            if let loaded = status.tape, loaded != tape {
+                throw PrinterError.tapeMismatch(loaded: loaded, label: tape)
             }
 
             let lines = PTCBP.rasterLines(width: bitmap.width, height: bitmap.height) { bitmap[$0, $1] }
