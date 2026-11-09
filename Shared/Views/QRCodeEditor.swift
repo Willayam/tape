@@ -23,12 +23,12 @@ struct QRCodeEditor: View {
             Text("QR code")
                 .font(.title2.weight(.semibold))
 
-            TextField("Web address or text", text: $text, axis: .vertical)
+            TextField("Web address or text", text: $text)
                 .textFieldStyle(.roundedBorder)
-                .lineLimit(1...4)
                 .autocorrectionDisabled()
                 #if os(iOS)
                 .textInputAutocapitalization(.never)
+                .submitLabel(.done)
                 #endif
                 .focused($focused)
                 .onSubmit(save)
