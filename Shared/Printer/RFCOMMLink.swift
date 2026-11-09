@@ -12,10 +12,9 @@ final class RFCOMMLink: ByteLink, IOBluetoothRFCOMMChannelDelegate {
 
     override func open() async throws {
         if isOpen { return }
-        let paired = (IOBluetoothDevice.pairedDevices() as? [IOBluetoothDevice]) ?? []
-        let device = paired.first { ($0.name ?? "").hasPrefix("PT-P300") }
-            ?? paired.first { ($0.name ?? "").hasPrefix("PT-") }
-        guard let device else {
+        guard let address = await Self.pairedPrinterAddress(),
+              let device = IOBluetoothDevice(addressString: address)
+        else {
             throw PrinterError.notPaired(
                 "Pair the printer first. Turn it on, open System Settings › Bluetooth and connect to PT-P300BT."
             )
@@ -44,6 +43,20 @@ final class RFCOMMLink: ByteLink, IOBluetoothRFCOMMChannelDelegate {
     }
 
     private var openToken: UUID?
+
+    /// The first IOBluetooth call waits for the user to answer macOS's Bluetooth permission prompt,
+    /// so the lookup runs off the main thread. It returns an address rather than the device, because
+    /// the channel has to be opened from a device made on the main thread to get its callbacks there.
+    private nonisolated static func pairedPrinterAddress() async -> String? {
+        await withCheckedContinuation { continuation in
+            DispatchQueue.global(qos: .userInitiated).async {
+                let paired = (IOBluetoothDevice.pairedDevices() as? [IOBluetoothDevice]) ?? []
+                let printer = paired.first { ($0.name ?? "").hasPrefix("PT-P300") }
+                    ?? paired.first { ($0.name ?? "").hasPrefix("PT-") }
+                continuation.resume(returning: printer?.addressString)
+            }
+        }
+    }
 
     /// The Serial Port Profile channel from the device's service record, or 1 when the record isn't cached.
     private func serialChannel(on device: IOBluetoothDevice) async -> BluetoothRFCOMMChannelID {
