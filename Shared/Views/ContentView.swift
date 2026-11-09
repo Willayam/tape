@@ -51,9 +51,6 @@ struct ContentView: View {
             #if os(macOS)
             if selection == nil { selection = store.labels.first?.id }
             #endif
-            // The first Bluetooth call blocks the main thread until macOS's permission prompt
-            // is answered, so let the window draw first.
-            try? await Task.sleep(for: .milliseconds(400))
             await printer.refresh()
         }
     }
