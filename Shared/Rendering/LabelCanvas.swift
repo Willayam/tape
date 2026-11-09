@@ -36,24 +36,48 @@ struct LabelCanvas: View {
     var body: some View {
         let slots = Slots(design)
         let height = slots.height
-        let padding = (design.endPaddingMM * LabelDesign.dotsPerMM).rounded()
-            + (slots.framed ? slots.inset + slots.lineHeight * 0.3 : 0)
+        let endPadding = (design.endPaddingMM * LabelDesign.dotsPerMM).rounded()
+        let padding = endPadding + (slots.framed ? slots.inset + slots.lineHeight * 0.3 : 0)
+        let qr = design.qrCode.flatMap(QRCode.make)
+        let hasText = !slots.lines.isEmpty
+        let side = Int(height)
+        // Four squares of white between the code and the text, the quiet zone QR readers expect.
+        let quietZone = qr.map { (CGFloat(side) * 4 / CGFloat($0.modules)).rounded(.up) } ?? 0
+        // Plain text needs no padding of its own after the code. A frame keeps its padding inside.
+        let qrTrailing = hasText ? (slots.framed ? quietZone : 0) : endPadding
+        let qrWidth = qr == nil ? 0 : endPadding + CGFloat(side) + qrTrailing
+        let fixedWidth = design.fixedLengthMM.map { CGFloat(($0 * LabelDesign.dotsPerMM).rounded()) }
 
-        VStack(alignment: design.alignment.horizontal, spacing: slots.gap) {
-            ForEach(Array(slots.lines.enumerated()), id: \.offset) { index, line in
-                Self.line(line, design: design, fontSize: layout.fontSize)
-                    .offset(y: index < layout.offsets.count ? layout.offsets[index] : 0)
-                    .frame(height: slots.lineHeight)
+        HStack(spacing: 0) {
+            if let qr, let image = qr.image(side: side) {
+                Image(decorative: image, scale: 1)
+                    .interpolation(.none)
+                    .frame(width: CGFloat(side), height: CGFloat(side))
+                    .padding(.leading, endPadding)
+                    .padding(.trailing, qrTrailing)
+            }
+            if hasText || qr == nil {
+                VStack(alignment: design.alignment.horizontal, spacing: slots.gap) {
+                    ForEach(Array(slots.lines.enumerated()), id: \.offset) { index, line in
+                        Self.line(line, design: design, fontSize: layout.fontSize)
+                            .offset(y: index < layout.offsets.count ? layout.offsets[index] : 0)
+                            .frame(height: slots.lineHeight)
+                    }
+                }
+                .padding(.leading, qr != nil && !slots.framed ? quietZone : padding)
+                .padding(.trailing, padding)
+                .frame(
+                    minWidth: fixedWidth.map { max(0, $0 - qrWidth) },
+                    alignment: Alignment(horizontal: design.alignment.horizontal, vertical: .center)
+                )
+                .frame(height: height)
+                .foregroundStyle(design.style == .inverted ? Color.white : Color.black)
+                .background { background(height: height) }
             }
         }
-        .padding(.horizontal, padding)
-        .frame(
-            minWidth: design.fixedLengthMM.map { ($0 * LabelDesign.dotsPerMM).rounded() },
-            alignment: Alignment(horizontal: design.alignment.horizontal, vertical: .center)
-        )
+        .frame(minWidth: fixedWidth, alignment: .leading)
         .frame(height: height)
-        .foregroundStyle(design.style == .inverted ? Color.white : Color.black)
-        .background { background(height: height) }
+        .background(Color.white)
         .fixedSize(horizontal: true, vertical: false)
         .environment(\.colorScheme, .light)
     }

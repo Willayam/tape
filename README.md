@@ -9,6 +9,7 @@ A label maker app for the Brother PT-P300BT (the P-touch Cube), for Mac and iPho
 ## What it does
 
 - Type a label of up to three lines and put icons anywhere in the text. An icon behaves like a character, so backspace deletes it.
+- Add a QR code for a web address or short text. It fills the 9 mm the printer can reach, and the app picks the smallest code that holds the text, because bigger squares scan more reliably. Codes up to 29 squares across, about 50 characters, scanned with a phone from 12 mm tape.
 - Search about 10,000 icons by keyword: SF Symbols, Phosphor, and 46 clothing icons such as boxers, sweaters, scarves and mittens.
 - Preview the exact black-and-white image the printer receives, on the colour of the tape you have loaded.
 - The app sizes each label so its tallest letter or icon fills the 9 mm the printer can reach, so nothing gets cut off.

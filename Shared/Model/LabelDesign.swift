@@ -124,6 +124,8 @@ struct LabelDesign: Codable, Hashable, Identifiable {
     var textScale: Double = 1.0
     var endPaddingMM: Double = 2
     var fixedLengthMM: Double?
+    /// Text for a QR code printed at the start of the label, filling the printable band.
+    var qrCode: String?
 
     static let dotsPerMM = 180.0 / 25.4
 
@@ -133,10 +135,15 @@ struct LabelDesign: Codable, Hashable, Identifiable {
         }
         .joined(separator: " ")
         .trimmingCharacters(in: .whitespacesAndNewlines)
+        if text.isEmpty, let qrCode { return qrCode }
         return text.isEmpty ? "Untitled label" : text
     }
 
     var isEmpty: Bool {
+        textIsEmpty && qrCode == nil
+    }
+
+    var textIsEmpty: Bool {
         lines.allSatisfy { line in
             line.allSatisfy {
                 if case .text(let s) = $0 { s.trimmingCharacters(in: .whitespaces).isEmpty } else { false }

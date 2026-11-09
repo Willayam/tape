@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		010003E4262A8FA9311147B1 /* PTCBP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E5902CE484C54690DD5C4F /* PTCBP.swift */; };
+		042EB9819C2A57C321048AC5 /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF4C9C92B1695B00B69C6F8 /* QRCode.swift */; };
 		0609CA8D9E8F317ECF75D086 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A412BB58E77249E5E9977E /* ContentView.swift */; };
 		0E46714FBB7FFA35D2A30579 /* LabelEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F907832B9DCBD8605D7B7BFC /* LabelEditorView.swift */; };
 		1CD0D03388F767CAFD1D68D2 /* SymbolCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35B2A7BAE0686E62DBC2970 /* SymbolCatalog.swift */; };
@@ -33,6 +34,7 @@
 		ED62267D7B366D9C188B6EE9 /* Phosphor-Fill.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBCEEFD3CD4C3FC3160F113B /* Phosphor-Fill.ttf */; };
 		F017492ADAEA16DFF853A306 /* PrinterSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D417CE311C85D04FBD4256 /* PrinterSession.swift */; };
 		F451B4618A6AEEDB9777A4A9 /* LabelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5701F6BA3C3A49F89E1683A7 /* LabelStore.swift */; };
+		F468A925B9C8DA0D7CA613DC /* QRCodeEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1365C19247261B2E03B8960 /* QRCodeEditor.swift */; };
 		F50C4809D43E7770A8E2F4C5 /* PrinterStatusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D526CD084088F4528DDB19C /* PrinterStatusMenu.swift */; };
 		F826AA5D3B0BDDA283840E87 /* PrinterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524DDD0AF4C35A7B6D12DA61 /* PrinterStatus.swift */; };
 /* End PBXBuildFile section */
@@ -56,6 +58,7 @@
 		6C5109D1A2B0A961327E1381 /* Phosphor-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Phosphor-Bold.ttf"; sourceTree = "<group>"; };
 		71D417CE311C85D04FBD4256 /* PrinterSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterSession.swift; sourceTree = "<group>"; };
 		7E442FF971180C886E6113C3 /* symbols.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = symbols.json; sourceTree = "<group>"; };
+		7FF4C9C92B1695B00B69C6F8 /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
 		8584A24172F167D789D40B89 /* Tape.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Tape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85F509DBAB90183A9EE10327 /* FontIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontIcons.swift; sourceTree = "<group>"; };
 		95BFB4B530C33226A8CA42B8 /* LabelCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCanvas.swift; sourceTree = "<group>"; };
@@ -67,6 +70,7 @@
 		E327DEC3C85C5D6F705FF054 /* TapeIcons-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "TapeIcons-LICENSE.txt"; sourceTree = "<group>"; };
 		E35B2A7BAE0686E62DBC2970 /* SymbolCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolCatalog.swift; sourceTree = "<group>"; };
 		EBCEEFD3CD4C3FC3160F113B /* Phosphor-Fill.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Phosphor-Fill.ttf"; sourceTree = "<group>"; };
+		F1365C19247261B2E03B8960 /* QRCodeEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeEditor.swift; sourceTree = "<group>"; };
 		F907832B9DCBD8605D7B7BFC /* LabelEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelEditorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +168,7 @@
 			children = (
 				95BFB4B530C33226A8CA42B8 /* LabelCanvas.swift */,
 				4B49CEBC2E32F18D89437CD4 /* LabelRasterizer.swift */,
+				7FF4C9C92B1695B00B69C6F8 /* QRCode.swift */,
 			);
 			path = Rendering;
 			sourceTree = "<group>";
@@ -175,6 +180,7 @@
 				F907832B9DCBD8605D7B7BFC /* LabelEditorView.swift */,
 				CFCBFC7081BE3BEB39E858C3 /* LabelTextView.swift */,
 				4D526CD084088F4528DDB19C /* PrinterStatusMenu.swift */,
+				F1365C19247261B2E03B8960 /* QRCodeEditor.swift */,
 				57528509F65BB3399D175F87 /* SymbolPicker.swift */,
 				9F52928204F2524953DB307C /* TapePreview.swift */,
 			);
@@ -288,6 +294,8 @@
 				F017492ADAEA16DFF853A306 /* PrinterSession.swift in Sources */,
 				F826AA5D3B0BDDA283840E87 /* PrinterStatus.swift in Sources */,
 				F50C4809D43E7770A8E2F4C5 /* PrinterStatusMenu.swift in Sources */,
+				042EB9819C2A57C321048AC5 /* QRCode.swift in Sources */,
+				F468A925B9C8DA0D7CA613DC /* QRCodeEditor.swift in Sources */,
 				29D631D001E6D0C6B855147F /* RFCOMMLink.swift in Sources */,
 				1CD0D03388F767CAFD1D68D2 /* SymbolCatalog.swift in Sources */,
 				CA3D2A51FEDCECE5BC8087D6 /* SymbolPicker.swift in Sources */,
