@@ -9,6 +9,7 @@ struct LabelEditorView: View {
     @State private var printRequested = false
     @State private var printError: String?
     @State private var editing = false
+    @State private var showingQRCode = false
 
     private var maxLines: Int {
         switch design.tape {
@@ -36,7 +37,7 @@ struct LabelEditorView: View {
                     LabelTextView(lines: $design.lines, font: design.font, weight: design.weight,
                                   maxLines: maxLines, controller: controller)
                         .frame(height: CGFloat(min(maxLines, usedLines + 1)) * LabelTextView.fontSize * 1.3 + 22)
-                    if design.isEmpty {
+                    if design.textIsEmpty {
                         Text("Type your label")
                             .font(.system(size: LabelTextView.fontSize, design: design.font.design))
                             .foregroundStyle(.tertiary)
@@ -45,11 +46,24 @@ struct LabelEditorView: View {
                             .allowsHitTesting(false)
                     }
                 }
+                #if os(macOS)
+                HStack(spacing: 8) {
+                    symbolButton
+                    qrButton
+                }
+                #else
                 symbolButton
+                qrButton
+                #endif
             } header: {
                 Text("Text")
             } footer: {
-                Text(maxLines == 1 ? "This tape fits one line." : "Press Return for a new line. This tape fits \(maxLines).")
+                if let code = design.qrCode.flatMap(QRCode.make), !code.fits(design.tape) {
+                    Text("The QR code's squares come out too small to scan on \(design.tape.title) tape. Use 12 mm tape.")
+                        .foregroundStyle(.red)
+                } else {
+                    Text(maxLines == 1 ? "This tape fits one line." : "Press Return for a new line. This tape fits \(maxLines).")
+                }
             }
 
             Section("Style") {
@@ -180,6 +194,27 @@ struct LabelEditorView: View {
             }
             .presentationDetents([.medium, .large])
             .presentationDragIndicator(.visible)
+        }
+        #endif
+    }
+
+    @ViewBuilder
+    private var qrButton: some View {
+        let button = Button {
+            showingQRCode = true
+        } label: {
+            Label(design.qrCode == nil ? "Add QR code" : "Edit QR code", systemImage: "qrcode")
+        }
+        let editor = QRCodeEditor(qrCode: $design.qrCode, tape: design.tape) { showingQRCode = false }
+        #if os(macOS)
+        button.popover(isPresented: $showingQRCode, arrowEdge: .bottom) {
+            editor.frame(width: 400)
+        }
+        #else
+        button.sheet(isPresented: $showingQRCode) {
+            editor
+                .presentationDetents([.height(320)])
+                .presentationDragIndicator(.visible)
         }
         #endif
     }
