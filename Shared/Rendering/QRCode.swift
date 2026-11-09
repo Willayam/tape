@@ -23,7 +23,7 @@ struct QRCode: Equatable {
 
     /// The smallest code for `text`, with the most error correction that keeps it that small.
     /// Nil when the text is empty or too long to print reliably.
-    static func make(_ text: String) -> QRCode? {
+    @MainActor static func make(_ text: String) -> QRCode? {
         if let hit = cache[text] { return hit }
         guard !text.isEmpty else { return nil }
         let candidates = Correction.allCases.compactMap { level in
@@ -37,7 +37,7 @@ struct QRCode: Equatable {
         return code
     }
 
-    nonisolated(unsafe) private static var cache: [String: QRCode?] = [:]
+    @MainActor private static var cache: [String: QRCode?] = [:]
 
     /// Whether the code's squares come out big enough to scan on this tape.
     func fits(_ tape: TapeWidth) -> Bool {
@@ -91,5 +91,5 @@ struct QRCode: Equatable {
         return rows[top...bottom].map { Array($0[left...right]) }
     }
 
-    nonisolated(unsafe) private static let context = CIContext()
+    private static let context = CIContext()
 }
