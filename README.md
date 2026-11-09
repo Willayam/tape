@@ -50,6 +50,8 @@ To run it on your iPhone, copy `Config/Local.xcconfig.example` to `Config/Local.
 
 The Xcode project comes from `project.yml`. If you change `project.yml`, regenerate the project with [XcodeGen](https://github.com/yonaskolb/XcodeGen) by running `xcodegen generate`.
 
+`Scripts/release.sh` builds the Mac release into `build/Tape.zip`. It always uses the bundle ID `com.williamlarsten.tape` and ad-hoc signing, whatever your `Local.xcconfig` says, then checks the signature, bundle ID and version. With `--publish NOTES.md` it also creates the GitHub release for the version in `project.yml`.
+
 ## How printing works
 
 The PT-P300BT speaks Brother's raster command set over a Bluetooth serial channel. `Shared/Printer/PTCBP.swift` turns the label image into that command stream. Its output matches, byte for byte, what [Ircama/PT-P300BT](https://github.com/Ircama/PT-P300BT) sends. That Python tool prints on this model, and its protocol notes are what made this app possible.
