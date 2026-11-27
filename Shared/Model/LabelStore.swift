@@ -16,7 +16,7 @@ final class LabelStore {
         fileURL = folder.appending(path: "labels.json")
         if let data = try? Data(contentsOf: fileURL),
            let saved = try? JSONDecoder().decode([LabelDesign].self, from: data) {
-            labels = saved
+            labels = Self.migrateTextScale(saved, from: data)
         }
         if labels.isEmpty {
             labels = Self.examples
@@ -42,6 +42,24 @@ final class LabelStore {
 
     func delete(_ ids: Set<LabelDesign.ID>) {
         labels.removeAll { ids.contains($0.id) }
+    }
+
+    private struct LegacySize: Decodable {
+        var textScale: Double?
+    }
+
+    /// Labels saved before point sizes stored their size as a fraction of the size that fills the tape.
+    /// Converts a fraction below 1 to the whole point size it printed at.
+    private static func migrateTextScale(_ labels: [LabelDesign], from data: Data) -> [LabelDesign] {
+        guard let legacy = try? JSONDecoder().decode([LegacySize].self, from: data), legacy.count == labels.count
+        else { return labels }
+        return zip(labels, legacy).map { label, old in
+            guard label.pointSize == nil, let scale = old.textScale, scale < 1 else { return label }
+            var copy = label
+            let fill = LabelRasterizer.layout(for: label).fillSize
+            copy.pointSize = (fill * max(scale, 0.3) / LabelDesign.dotsPerPoint).rounded()
+            return copy
+        }
     }
 
     private func scheduleSave() {

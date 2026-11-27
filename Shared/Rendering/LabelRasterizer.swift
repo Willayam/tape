@@ -61,9 +61,10 @@ enum LabelRasterizer {
         // Two dots of clearance top and bottom absorb rounding when the measurement is scaled down.
         let room = slots.lineHeight - 4
         let fill = inks.map { room / $0.height * referenceSize }.min() ?? slots.lineHeight * 0.8
-        let fontSize = fill * min(max(design.textScale, 0.3), 1)
+        let fontSize = design.pointSize.map { min($0 * LabelDesign.dotsPerPoint, fill) } ?? fill
         return LabelCanvas.Layout(
             fontSize: fontSize,
+            fillSize: fill,
             offsets: inks.map { -$0.centerOffset * fontSize / referenceSize }
         )
     }
