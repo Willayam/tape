@@ -9,6 +9,8 @@ struct LabelCanvas: View {
 
     struct Layout {
         var fontSize: CGFloat
+        /// The largest size whose ink fits the band, which is also the size when no point size is set.
+        var fillSize: CGFloat
         /// Moves each non-blank line so its ink, not its font's line box, is centered in its slot.
         var offsets: [CGFloat]
     }

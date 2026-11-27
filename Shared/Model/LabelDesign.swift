@@ -119,15 +119,16 @@ struct LabelDesign: Codable, Hashable, Identifiable {
     var style: LabelStyle = .plain
     var alignment: LabelAlignment = .center
     var tape: TapeWidth = .mm12
-    /// Fraction of the largest size that fits. 1 makes the tallest line's ink fill the printable band.
-    /// Older labels may hold values above 1; the renderer caps them at 1 so nothing is cut off.
-    var textScale: Double = 1.0
+    /// Font size in typographic points, 1/72 inch. Nil sizes the text so its tallest line fills the
+    /// printable band. The renderer caps a fixed size at that fill so nothing is cut off.
+    var pointSize: Double?
     var endPaddingMM: Double = 2
     var fixedLengthMM: Double?
     /// Text for a QR code printed at the start of the label, filling the printable band.
     var qrCode: String?
 
     static let dotsPerMM = 180.0 / 25.4
+    static let dotsPerPoint = 180.0 / 72
 
     var title: String {
         let text = lines.map { line in

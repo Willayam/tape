@@ -25,18 +25,18 @@ struct LabelEditorView: View {
 
     var body: some View {
         Form {
+            #if os(macOS)
             Section {
-                TapePreview(design: design, status: printer.status)
-                    .frame(maxWidth: .infinity)
+                preview
                     .padding(.vertical, 16)
-                    .animation(.snappy(duration: 0.2), value: design.renderKey)
             }
+            #endif
 
             Section {
                 ZStack(alignment: .topLeading) {
                     LabelTextView(lines: $design.lines, font: design.font, weight: design.weight,
                                   maxLines: maxLines, controller: controller)
-                        .frame(height: CGFloat(min(maxLines, usedLines + 1)) * LabelTextView.fontSize * 1.3 + 22)
+                        .frame(height: CGFloat(min(maxLines, max(1, design.lines.count))) * LabelTextView.fontSize * 1.3 + 22)
                     if design.textIsEmpty {
                         Text("Type your label")
                             .font(.system(size: LabelTextView.fontSize, design: design.font.design))
@@ -46,14 +46,15 @@ struct LabelEditorView: View {
                             .allowsHitTesting(false)
                     }
                 }
-                #if os(macOS)
                 HStack(spacing: 8) {
                     symbolButton
+                    #if os(iOS)
+                    Spacer()
+                    #endif
                     qrButton
                 }
-                #else
-                symbolButton
-                qrButton
+                #if os(iOS)
+                .buttonStyle(.borderless)
                 #endif
             } header: {
                 Text("Text")
@@ -66,34 +67,41 @@ struct LabelEditorView: View {
                 }
             }
 
-            Section("Style") {
-                Picker("Font", selection: $design.font) {
-                    ForEach(LabelFont.allCases) { Text($0.title).tag($0) }
-                }
-                Picker("Weight", selection: $design.weight) {
-                    ForEach(LabelWeight.allCases) { Text($0.title).tag($0) }
-                }
-                Picker("Look", selection: $design.style) {
-                    ForEach(LabelStyle.allCases) { Text($0.title).tag($0) }
-                }
-                .pickerStyle(.segmented)
-                if usedLines > 1 || design.fixedLengthMM != nil {
-                    Picker("Alignment", selection: $design.alignment) {
-                        ForEach(LabelAlignment.allCases) {
-                            Label($0.rawValue.capitalized, systemImage: $0.symbol).labelStyle(.iconOnly).tag($0)
+            Section {
+                LabeledContent("Font") {
+                    HStack(spacing: 4) {
+                        Picker("Font", selection: $design.font) {
+                            ForEach(LabelFont.allCases) { Text($0.title).tag($0) }
+                        }
+                        Picker("Weight", selection: $design.weight) {
+                            ForEach(LabelWeight.allCases) { Text($0.title).tag($0) }
                         }
                     }
-                    .pickerStyle(.segmented)
-                }
-                LabeledContent("Size") {
-                    Slider(value: $design.textScale, in: 0.5...1.0) {
-                        Text("Size")
-                    } minimumValueLabel: {
-                        Image(systemName: "textformat.size.smaller")
-                    } maximumValueLabel: {
-                        Image(systemName: "textformat.size.larger")
-                    }
                     .labelsHidden()
+                    .pickerStyle(.menu)
+                    .fixedSize()
+                }
+                HStack {
+                    Picker("Look", selection: $design.style) {
+                        ForEach(LabelStyle.allCases) { Text($0.title).tag($0) }
+                    }
+                    if usedLines > 1 || design.fixedLengthMM != nil {
+                        Picker("Alignment", selection: $design.alignment) {
+                            ForEach(LabelAlignment.allCases) {
+                                Label($0.rawValue.capitalized, systemImage: $0.symbol).labelStyle(.iconOnly).tag($0)
+                            }
+                        }
+                        .fixedSize()
+                    }
+                }
+                .labelsHidden()
+                .pickerStyle(.segmented)
+                sizeRow
+            } header: {
+                Text("Style")
+            } footer: {
+                if let pointSize = design.pointSize, pointSize > fillPoints + 0.05 {
+                    Text("\(Int(pointSize)) pt doesn't fit this tape, so it prints at \(fillPoints.formatted(.number.precision(.fractionLength(0...1)))) pt.")
                 }
             }
 
@@ -117,6 +125,12 @@ struct LabelEditorView: View {
         .navigationTitle(design.title)
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        .safeAreaInset(edge: .top, spacing: 0) {
+            preview
+                .padding(.horizontal)
+                .padding(.vertical, 10)
+                .background(Color(.systemGroupedBackground))
+        }
         .safeAreaInset(edge: .bottom) {
             if !editing {
                 printButton
@@ -170,6 +184,51 @@ struct LabelEditorView: View {
                 controller.focus()
             }
         }
+    }
+
+    private var preview: some View {
+        #if os(iOS)
+        let maxScale: CGFloat = 1.2
+        #else
+        let maxScale: CGFloat = 3
+        #endif
+        return TapePreview(design: design, status: printer.status, maxScale: maxScale)
+            .frame(maxWidth: .infinity)
+            .animation(.snappy(duration: 0.2), value: design.renderKey)
+    }
+
+    /// The size the label prints at when no point size is set.
+    private var fillPoints: Double {
+        LabelRasterizer.layout(for: design).fillSize / LabelDesign.dotsPerPoint
+    }
+
+    /// Shows the size in points either way, so a label sized to fit can be matched on the next one.
+    /// The first step down from Fit lands on the whole size just below it.
+    private var sizeRow: some View {
+        let fill = fillPoints
+        let shown = design.pointSize ?? fill.rounded()
+        let largest = max(4, fill.rounded(.down))
+        let below = design.pointSize.map { min($0, largest + 1) - 1 }
+            ?? (shown > largest ? largest : largest - 1)
+        let above = design.pointSize.flatMap { $0 < largest ? $0 + 1 : nil }
+        return HStack {
+            Text("Size")
+            Spacer()
+            if design.pointSize != nil {
+                Button("Fit") { design.pointSize = nil }
+                    .buttonStyle(.bordered)
+                    .controlSize(.small)
+            }
+            Text(design.pointSize == nil ? "Fit, \(Int(shown)) pt" : "\(Int(shown)) pt")
+                .foregroundStyle(.secondary)
+            Stepper(
+                "Size",
+                onIncrement: above.map { size in { design.pointSize = size } },
+                onDecrement: below >= 4 ? { design.pointSize = below } : nil
+            )
+            .labelsHidden()
+        }
+        .monospacedDigit()
     }
 
     @ViewBuilder
